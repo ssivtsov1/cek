@@ -1,0 +1,10 @@
+.border-radius(@rad){
+  -webkit-border-radius: @rad;
+  -moz-border-radius: @rad;
+  border-radius: @rad;
+}
+.box-shadow(@x, @y, @blur, @color, @inset:~''){
+  -webkit-box-shadow: @inset @x @y @blur @color;
+  -moz-box-shadow: @inset @x @y @blur @color;
+  box-shadow: @inset @x @y @blur @color;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+    .normal_link,
+    .active_link{
+        font-size:15px;
+        border:1px solid #ccc;
+        padding:3px;
+    }
+    .active_link{
+        border:1px solid red;
+    }
+    </style>
+</head>
+<body>
+    <?php
+    echo "<table align='center' border='1'>
+                <tr><th>Номер<br />закупівлі</th>
+                <th>Тип<br />закупівлі</th>
+                <th>ДК-021:2015</th>
+                <th>Назва<br />закупівлі</th>
+                <th>Очікувана<br />вартість<br />(грн.)</th>
+                <th>Контактна<br />особа</th>
+                <th>Пов’язані<br />документи</th>
+                <th>Орієнтовний<br />початок<br />проведення<br />закупівлі</th>
+                <th>Посилання<br />на сайт<br />prozorro</th></tr>";
+    
+    foreach($data as $message): 
+    echo $message;
+    endforeach;
+    
+    // Инстанцирование объекта `Pagination_Helper`,
+    // в него передаётся объект класса `Pagination_Manager` $paginationManager
+    $paginationHelper = new Pagination_Helper($paginationManager);
+
+    // Настройка внешнего вида пагинатора
+                       // Хотим получить стандартный вид пагинации
+    $paginationHelper->setPaginationType(Pagination_Helper::PAGINATION_NORMAL_TYPE)
+                       // Устанавливаем CSS-класс каждого элемента <a> в интерфейсе пагинатора
+                     ->setCssNormalLinkClass("normal_link")
+                       // Устанавливаем CSS-класс элемента <span> в интерфейсе пагинатора,
+                       // страница которого открыта в текущий момент.
+                     ->setCssActiveLinkClass("active_link")
+                       // Параметр для query string гиперссылки
+                     ->setRequestUriParameter("param_1", "value_1")
+                       // Параметр для query string гиперссылки
+                     ->setRequestUriParameter("param_2", "value_2")
+                       // Устанавливаем идентификатор фрагмента гиперссылок пагинатора
+                     ->setFragmentIdentifier("result1");
+    ?>
+    <div>
+        Всего записей: <strong><?=$paginationHelper->getPagination()->getCount()?></strong>
+        <?php if ($paginationHelper->getPagination()->getCount()): ?>
+            <br /><br /><span>Страницы:</span>
+            <?=$paginationHelper->getHtml()?>
+        <?php endif; ?>
+        <br /><br />
+    </div>
+</body>
+</html>

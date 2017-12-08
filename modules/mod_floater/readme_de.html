@@ -1,0 +1,52 @@
+<!DOCTYPE html public '-//W3C//DTD HTML 4.01 Transitional//EN'>
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<TITLE>R3D Floater Module</TITLE>
+<style type="text/css" media="screen"><!--
+body {font: normal 12px/18px Arial, Helvetica, sans-serif; color: #000;}
+--></style>
+</HEAD>
+<BODY>
+<A title='Visit www.r3d.de' target='_blank' href='http://www.r3d.de'><IMG style='float:right;margin:0px 15px 4px 22px;' src='http://www.r3d.de/01_development/images/r3d_extensions_200x95.jpg' border='0' alt='Logo'/></A>
+<H2>R3D Floater Module</H2>
+Version 2.5.0 f&uuml;r Joomla 2.5x - basierend auf DOM Scripting, keine Konflilkte mit MooTools oder jQuery.<BR/>
+Lassen Sie Inhalts-Module in die Seite schweben. Beispiel auf <A target='_blank' href='http://www.r3d.de/'>www.r3d.de</A>.
+
+<H3>Anleitung:</H3>
+Bitte befolgen Sie zuerst alle Schritte genau so wie hier beschrieben. Erst wenn es funktioniert sollten Sie mit &auml;nderungen experimentieren.<br>
+Diese Anleitung k&ouml;nnen Sie auch hier &ouml;ffnen: <a href='http://www.r3d.de/01_development/floater/2.5.x/readme_de.html' target='_blank'>readme_de.html</a>.<br>
+	<OL compact>
+		<LI>Installieren Sie das Modul mit dem Joomla Erweiterungs Manager.</LI><br>
+		<LI>Zuerst m&uuml;ssen Sie ein paar Joomla Template Dateien von Hand &auml;ndern. Benutzen Sie einen Texteditor - bitte machen Sie zuvor Sicherungen der zu &auml;ndernden Dateien.<br>
+		&ouml;ffnen Sie die Datei /templates/my-template-in-use/<STRONG>templateDetails.xml</STRONG> und f&uuml;gen Sie zwei neue Template Positionen <EM>floatercontent</EM> und <EM>floatercontainer</EM> hinzu, benutzen Sie folgenden Code (copy & paste die 2 Zeilen in fett):
+		<PRE>&lt;positions&gt;<BR> ...<BR><strong> &lt;position&gt;floatercontent&lt;/position&gt;<BR> &lt;position&gt;floatercontainer&lt;/position&gt;</strong><BR>&lt;/positions&gt;</PRE>
+		</LI>
+		<LI value='2'>&ouml;ffnen Sie jetzt die Datei /templates/my-template-in-use/<strong>index.php</strong> und f&uuml;gen Sie am Ende der HTML Struktur direkt vor dem Ende des BODYs folgenden  Code ein:
+		<PRE>&lt;jdoc:include type="modules" name="floatercontainer" style="xhtml" /&gt;</PRE>
+		</LI>
+		<LI>Gehen Sie zur&uuml;ck zur Joomla Administration und erstellen Sie in Erweiterungen -> Module ein neues Modul auf der 'floatercontent' Position.<BR>Beispiel: Klick auf NEU, w&auml;hlen Sie "Eigene Inhalte (Leeres Modul)" und tragen folgende Inhalte ein:
+			<UL compact>
+				<LI>Titel: <strong>Mein Floater Inhalt</strong></LI>
+				<LI>Titel anzeigen: Verbergen</LI>
+				<LI>Position: <STRONG>floatercontent</STRONG></LI>
+				<LI>Status: Freigegeben</LI>
+				<LI>Zugriffsebene: Public</LI>
+				<LI>Benutzerdefinierte Ausgabe: Hallo Welt!</LI>
+				<LI>Modulzuweisung: <STRONG>Auf allen Seiten</STRONG></LI>
+			</UL>
+		Jegliches Modul (wie z.B. Beitr&auml;ge - Newsflash etc.) kann so &uuml;ber die floatercontent Position eingebunden werden.<br><br>
+		</LI>
+		<LI>&ouml;ffnen Sie jetzt das <STRONG>R3D Floater</STRONG> Modul und &auml;ndern wie folgt ab:
+			<UL compact>
+				<LI>Titel anzeigen: Verbergen</LI>
+				<LI>Position: floatercontainer <STRONG>(NOT floatercontent!)</STRONG></LI>
+				<LI>Status: Freigegeben</LI>
+				<LI>Zugriffsebene: Public</LI>
+				<LI>Modulzuweisung: <STRONG>MEN&uuml;(S) W&auml;HLEN, WO DER FLOATER ANGEZEIGT WERDEN SOLL</STRONG></LI>
+				<LI>Basisoptionen: benutzen Sie die Voreinstellungen - und &auml;ndern diese sp&auml;ter ab</LI>
+			</UL><br>
+		</LI>
+	</OL>
+</BODY>
+</HTML>

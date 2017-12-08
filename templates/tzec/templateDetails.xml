@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 3.1//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
+<extension version="3.1" type="template" client="site">
+  <name>bambini</name>
+  <creationDate>2016-06-08</creationDate>
+  <version>3.0</version>
+  <author>UkrMisto</author>
+  <authorUrl>http://site-devel.com/</authorUrl>
+  <description>UkrMisto - Joomla!3.x template</description>
+  <files>
+    <fileName>index.php</fileName>
+    <fileName>templateDetails.xml</fileName>
+    <fileName>index.html</fileName>
+    <fileName>favicon.ico</fileName>
+	<fileName>template_thumbnail.png</fileName>
+    <folder>/images</folder>
+    <folder>/css</folder>
+	<folder>/html</folder>
+	<folder>/js</folder>
+	<folder>/fonts</folder>
+	<folder>/language</folder>
+  </files>
+  <positions>
+	<position>ticker</position>
+	<position>logo</position>
+	<position>name-company</position>
+	<position>search</position>
+	<position>head-phone</position>
+	<position>languages</position>  	
+	<position>menu-top</position>
+	<position>slider</position>
+  	<position>services</position>
+  	<position>main-news-title</position>
+  	<position>main-news</position>
+  	<position>news</position>
+	<position>breadcrumbs</position>
+	<position>left-column</position>
+	<position>right-column</position>
+	<position>video</position>
+	<position>video-main</position>
+	<position>form</position>
+	<position>text</position>
+	<position>press</position>
+	<position>map</position>
+	<position>footer-logo</position>
+	<position>menu-footer1</position>
+	<position>menu-footer2</position>
+	<position>menu-cont</position>
+	<position>menu-brands</position>
+	<position>footer-copy</position>	
+	<position>floatercontent</position>
+	<position>floatercontainer</position>
+  </positions>
+  
+
+	<config>
+		<fields name="params">
+			
+			<fieldset name="basic">
+	
+				
+			</fieldset>
+		</fields>
+	</config>	
+</extension>

@@ -1,0 +1,1 @@
+<iframe width="<?php print $this->width?>" height="<?php print $this->height?>" frameborder="0" src="<?php print $this->url?>"></iframe>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="site" method="upgrade">
+<name>MarqueeAholic</name>
+<creationDate>October 2013</creationDate>
+<version>1.0.0</version>
+<author>GraphicAholic</author>
+<copyright>Copyright 2013 - graphicaholic.com</copyright>
+<license>http://www.gnu.org/copyleft/lgpl.html</license>
+<authorEmail>support@graphicaholic.com</authorEmail>
+<authorUrl>http://www.graphicaholic.com/demos</authorUrl>
+	<description>Marquee module for Joomla 3.x</description>
+	<files>
+		<filename module="mod_marqueeaholic">mod_marqueeaholic.php</filename>
+        <folder>js</folder>
+        <folder>fields</folder>
+        <folder>images</folder>
+        <folder>css</folder>
+		<filename>index.html</filename>
+		<filename>mod_marqueeaholic.xml</filename>
+	</files>
+	<config> 
+	<fields name="params" addfieldpath="/modules/mod_marqueeaholic/fields">
+ 
+	<!-- General Settings -->
+	<fieldset name="general" group="general" label="General Settings">
+<field name="marqueeText" type="textarea" filter="raw" cols="20" rows="3" default="" label="Marquee text" description="Enter text for marquee. Basic HTML tags supported." />
+	<field name="marqueeURL" type="radio" class="btn-group" default="0" label="Hyperlink marquee?" description="Yes or No option">
+			<option value="0">No</option>	
+			<option value="1">Yes</option>
+	</field>
+	<field name="hyperLink" type="text" size="45" default="#" label="Hyperlink" description="MarqueeAholic hyperlink" />
+	<field name="linkWindow" type="list" default="self" label="Hyperlink window" description="Select to open link in a new window - tab or same">
+			<option value="blank">New Window or Tab</option>	
+			<option value="self">Same Window</option>
+	</field>
+		<field name="marqueeFontFamily" type="list" default="Default" label="Font Style" description="Select the font style you wish to use. Default will render your template's assigned font family.">
+			<option value=" ">Default</option>
+			<option value="Georgia, serif">Georgia</option>
+			<option value="Palatino Linotype, Book Antiqua, Palatino, serif">Palatino Linotype</option>
+			<option value="Times New Roman, Times, serif">Times New Roman</option>
+			<option value="Arial, Helvetica, sans-serif">Arial</option>
+			<option value="Arial Black, Gadget, sans-serif">Arial Black</option>
+			<option value="Impact, Charcoal, sans-serif">Impact</option>
+			<option value="Comic Sans MS, cursive, sans-serif">Comic Sans MS</option>
+			<option value="Lucida Sans Unicode, Lucida Grande, sans-serif">Lucida Sans Unicode</option>
+			<option value="Tahoma, Geneva, sans-serif">Tahoma</option>
+			<option value="Trebuchet MS, Helvetica, sans-serif">Trebuchet MS</option>
+			<option value="Verdana, Geneva, sans-serif">Verdana</option>
+			<option value="Courier New, Courier, monospace">Courier New</option>
+			<option value="Lucida Console, Monaco, monospace">Lucida Console</option>
+		</field>
+
+<field name="marqueeFontColor" type="colorinput" default="" label="Marquee font color" description="Leave blank to use your templates default settings" />
+<field name="marqueeBackground" type="colorinput" default="" label="Marquee background color" description="Leave blank to use your templates default settings" />
+<field name="marqueeBorder" type="text" default="" label="Marquee border" description="Leave blank to use your templates default settings" />
+
+	<field name="marqueeBorderStyle" type="list" default="none" label="Border style" description="Select to your needs">
+			<option value="none">None</option>	
+			<option value="solid">Solid</option>
+			<option value="dotted">Dotted</option>
+			<option value="dashed">Dashed</option>
+			<option value="double">Double</option>
+			<option value="groove">Groove</option>
+			<option value="ridge">Ridge</option>
+			<option value="inset">Inset</option>
+			<option value="outset">Outset</option>
+	</field>
+
+<field name="marqueeBorderColor" type="colorinput" default="" label="Marquee border color" description="Leave blank to use your templates default settings" />
+<field name="marqueeFontSize" type="text" default="" label="Marquee font size" description="Leave blank to use your templates default settings" />
+<field name="marqueeHeight" type="text" default="auto" label="Marquee height" description="Adjust as needed to show height of font size" />
+<field name="marqueeWidth" type="text" default="auto" label="Marquee width" description="Adjust as needed. Suggestion: Using percentages to maintain responsive layout." />
+<field name="marqueeBottomMargin" type="text" default="0px" label="Marquee bottom margin" description="Adjust as needed." />
+<field name="marqueeSpeed" type="text" default="10000" label="Marquee speed" description="" />
+<field name="marqueeGap" type="text" default="50" label="Gap between tickers" description="" />
+<field name="marqueeDelay" type="text" default="0" label="Delay before start" description="" />
+<field name="marqueeDirection" type="text" default="left" label="Marquee direction" description="left or right" />
+	<field name="marqueeDuplication" type="radio" class="btn-group" default="0" label="Duplicate marquee" description="Yes or No option">
+			<option value="0">No</option>	
+			<option value="1">Yes</option>
+	</field>
+	<field name="marqueePause" type="radio" class="btn-group" default="1" label="Pause on hover" description="Yes or No option">
+			<option value="0">No</option>	
+			<option value="1">Yes</option>
+	</field>
+	</fieldset>
+
+	<!-- Advanced Settings -->
+	<fieldset name="advanced" group="advanced">
+				<field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="fieldMODULECLASSSUFFIX" />
+				<field name="cache" type="radio" class="btn-group" default="1" label="Caching" description="Select whether to cache the content of this module">
+					<option value="1">Use global</option>
+					<option value="0">No caching</option>
+				</field>
+				<field name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
+				<field name="documentation" type="docs" default="900" label="" description="" />
+	</fieldset>
+</fields>
+</config>
+</extension>

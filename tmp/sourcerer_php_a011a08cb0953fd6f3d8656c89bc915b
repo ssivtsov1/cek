@@ -1,0 +1,174 @@
+<?php
+defined('_JEXEC') or die;
+function sourcerer_php_a011a08cb0953fd6f3d8656c89bc915b($src_variables){
+$app = $mainframe = JFactory::getApplication();
+$document = $doc = JFactory::getDocument();
+$database = $db = JFactory::getDbo();
+$user = JFactory::getUser();
+$Itemid = $app->input->getInt('Itemid');
+if (is_array($src_variables)) {foreach ($src_variables as $src_key => $src_value) {${$src_key} = $src_value;}}
+#ini_set('display_errors','Off'); 
+echo "<form method='post' action=".$_SERVER['PHP_SELF'].">"; 
+include_once("./images/modules/Pagination/Manager.php"); 
+include_once("./images/modules/Pagination/Helper.php"); 
+$servername = "localhost"; 
+$username = "prozoro"; 
+$password = "58QtmQ6nXqMcTjtT"; 
+$dbname = "db"; 
+ini_set('display_errors',1); 
+ini_set('error_reporting',2047); 
+Header("Content-Type: text/html; charset=UTF-8"); 
+
+ 
+$sort = ''; 
+$sort2 = ''; 
+$sort3 = ''; 
+
+ 
+if (isset($_COOKIE['select_res'])) $sort = $_COOKIE['select_res']; 
+if (isset($_COOKIE['search_gorod'])) $sort2 = $_COOKIE['search_gorod']; 
+if (isset($_COOKIE['search_street'])) $sort3 = $_COOKIE['search_street']; 
+
+ 
+if (!empty($_POST['select_res'])) { 
+    $sort = $_POST['select_res']; 
+    setcookie("select_res", $sort); 
+} 
+if (!empty($_POST['search_gorod'])) { 
+    $sort2 = $_POST['search_gorod']; 
+    setcookie("search_gorod", $sort2); 
+} 
+if (!empty($_POST['search_street'])) { 
+    $sort3 = $_POST['search_street']; 
+    setcookie("search_street", $sort3); 
+} 
+
+ 
+if ($sort == '') $sort = '%'; 
+if ($sort2 == '') $sort2 = '%'; 
+if ($sort3 == '') $sort3 = '%'; 
+
+ 
+echo "<h1 align='center'><hr />"; 
+echo "<font size='4pt' onclick='showMessage();'>Вкажіть опції пошуку та натисніть кнопку: </font><br />"; 
+echo "<table align='center' border='1'> 
+                <tr><th>Назва РЕМ</th> 
+                <th>Населений пункт</th> 
+                <th>Вулиця</th></tr>"; 
+     
+echo "<tr><td align='center'><select id=selectid name=select_res style='font-size:12pt;font-weight:500'> 
+        <option value=%>Всі РЕМ</option> 
+        <option value=Інгулецькі РЕМ>Інгулецькі РЕМ</option> 
+        <option value=Апостолівські РЕМ>Апостолівські РЕМ</option>     
+        <option value=Вільногірські РЕМ>Вільногірські РЕМ</option> 
+        <option value=Гвардійські РЕМ>Гвардійські РЕМ</option> 
+        <option value=Дніпропетровські РЕМ>Дніпропетровські РЕМ</option> 
+        <option value=Жовтоводські РЕМ РЕМ>Жовтоводські РЕМ</option> 
+        <option value=Павлоградські РЕМ>Павлоградські РЕМ</option></td></select>"; 
+
+ 
+if ($sort2 == '%') echo "<td align='center'><input type='text' name='search_gorod' value='Всі' style='width:90%;max-width:90%;font-size:12pt;font-weight:500'/></td>"; 
+else  
+    echo "<td align='center'><input type='text' name='search_gorod' value='".$sort2."' style='width:90%;max-width:90%;font-size:12pt;font-weight:500'/></td>"; 
+if ($sort3 == '%') echo "<td align='center'><input type='text' name='search_street' value='Всі' style='width:90%;max-width:90%;font-size:12pt;font-weight:500'/></td></tr>"; 
+else  
+    echo "<td align='center'><input type='text' name='search_street' value='".$sort3."' style='width:90%;max-width:90%;font-size:12pt;font-weight:500'/></td>"; 
+echo "</table>"; 
+
+ 
+ 
+echo "<input type=submit class='btn-style' name=send value='Виконати пошук' onClick='location.href="https://cek.dp.ua/.$_SERVER['PHP_SELF']."'>"; 
+echo "<hr /></h1>"; 
+
+ 
+if ($sort2 == 'Всі') $sort2 = '%'; 
+if ($sort3 == 'Всі') $sort3 = '%'; 
+
+ 
+if ($sort2 == '') $sort2 = '%'; 
+if ($sort3 == '') $sort3 = '%'; 
+
+ 
+$conn = mysqli_connect($servername, $username, $password, $dbname); 
+/* проверка соединения */ 
+if (mysqli_connect_errno()) { 
+    printf("Соединение не удалось: %s\n", mysqli_connect_error()); 
+    exit(); 
+} 
+$paginationManager = new Pagination_Manager(20, 10, $_REQUEST); 
+
+ 
+$sql = "SELECT `РЕМ`,`Населенні пункт`,`Вулиця`,`Номери будинків` FROM db.address  
+where `РЕМ` like '%".$sort."%' and `Населенні пункт` like '%".$sort2."%' and `Вулиця` like '%".$sort3."%' 
+order by `РЕМ` limit " . 
+           $paginationManager->getStartLimit() . "," . 
+           $paginationManager->getStopLimit(); 
+
+ 
+$sql_count="SELECT count(*) FROM db.address  
+where `РЕМ` like '%".$sort."%' and `Населенні пункт` like '%".$sort2."%' and `Вулиця` like '%".$sort3."%' 
+order by `Населенні пункт`;"; 
+
+ 
+$result_list = mysqli_query($conn, $sql); 
+$result_found_rows = mysqli_query($conn,$sql_count); 
+$count = mysqli_fetch_assoc($result_found_rows); 
+$paginationManager->setCount($count["count(*)"]); 
+
+ 
+//if ($row = mysqli_fetch_assoc($result_list) > 0) { 
+while ($row = mysqli_fetch_assoc($result_list)) { 
+     
+    $data[] = "<tr><td align=center>".$row["РЕМ"]."</td><td align='center'>".$row["Населенні пункт"]. 
+      "</td><td align='center'>".$row["Вулиця"]."</td><td align='center'>".$row["Номери будинків"]. 
+      "</td></tr>"; 
+     
+} 
+
+ 
+if (!empty($data)) { 
+echo "<body><table align='center' border='1'> 
+                <tr><th>Назва РЕМ</th> 
+                <th>Населенний пункт</th> 
+                <th>Назва вулиці</th> 
+                <th>Номери будинків</tr>"; 
+     
+    foreach($data as $message): 
+    echo $message; 
+    endforeach; 
+    echo "</tr></table></body>"; 
+    // Инстанцирование объекта `Pagination_Helper`, 
+    // в него передаётся объект класса `Pagination_Manager` $paginationManager 
+    $paginationHelper = new Pagination_Helper($paginationManager); 
+
+ 
+    // Настройка внешнего вида пагинатора 
+                       // Хотим получить стандартный вид пагинации 
+    $paginationHelper->setPaginationType(Pagination_Helper::PAGINATION_NORMAL_TYPE) 
+                       // Устанавливаем CSS-класс каждого элемента <a> в интерфейсе пагинатора 
+                     ->setCssNormalLinkClass("normal_link") 
+                       // Устанавливаем CSS-класс элемента <span> в интерфейсе пагинатора, 
+                       // страница которого открыта в текущий момент. 
+                     ->setCssActiveLinkClass("active_link") 
+                       // Параметр для query string гиперссылки 
+                     ->setRequestUriParameter("param_1", "value_1") 
+                       // Параметр для query string гиперссылки 
+                     ->setRequestUriParameter("param_2", "value_2") 
+                       // Устанавливаем идентификатор фрагмента гиперссылок пагинатора 
+                     ->setFragmentIdentifier("result1"); 
+
+ 
+echo "<div><font size='4pt'>Всього записів: ".$paginationHelper->getPagination()->getCount(); 
+    if ($paginationHelper->getPagination()->getCount()){ 
+    echo "<br />Сторінки: "; 
+    echo $paginationHelper->getHtml();         
+    echo "<br /><br /><div></font></body>"; 
+    } 
+} 
+else { 
+    echo "</tr></table>"; 
+    //echo "<pre>".$sql."</pre>"; 
+    echo "<p align='center'><font size='4pt'>Не знайдено інформації по вашому запиту</p></body>"; 
+    };
+;return get_defined_vars();
+;}

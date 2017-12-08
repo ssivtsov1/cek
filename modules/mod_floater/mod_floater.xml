@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.2.0" client="site" method="upgrade">
+	<name>R3D Floater</name>
+	<author>Richard Dvorak</author>
+	<creationDate>07.12.2013</creationDate>
+	<copyright>(C) 2009 www.r3d.de - All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>info@r3d.de</authorEmail>
+	<authorUrl>www.r3d.de</authorUrl>
+	<version>3.2.0</version>
+	
+	<description>MOD_FLOATER_DESCRIPTION</description>
+	
+	<languages>
+		<language tag="en-GB">en-GB.mod_floater.ini</language>
+		<language tag="en-GB">en-GB.mod_floater.sys.ini</language>
+		<language tag="de-DE">de-DE.mod_floater.ini</language>
+		<language tag="de-DE">de-DE.mod_floater.sys.ini</language>
+	</languages>
+	
+	<files>
+		<filename module="mod_floater">mod_floater.php</filename>
+		<filename module="mod_floater">index.html</filename>
+		<filename module="mod_floater">readme.html</filename>
+		<filename module="mod_floater">readme_de.html</filename>
+		<filename module="mod_floater">images/r3d_extensions_200x95.jpg</filename>
+		<filename module="mod_floater">images/index.html</filename>
+	</files>
+	
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				
+				<field name="loadmodule" type="sql" label="Select a module" query="SELECT id, title, module FROM #__modules WHERE position = 'floatercontent'" key_field="id" value_field="title" />
+				
+				<field name="timeout" type="list" default="10000" label="Timeout" description="Time until Box disappears - select: 5 sec through 86400 sec(one whole day!)">
+					<option value="5000">5 sec</option>
+					<option value="6000">6 sec</option>
+					<option value="7000">7 sec</option>
+					<option value="8000">8 sec</option>
+					<option value="9000">9 sec</option>
+					<option value="10000">10 sec</option>
+					<option value="11000">11 sec</option>
+					<option value="12000">12 sec</option>
+					<option value="13000">13 sec</option>
+					<option value="14000">14 sec</option>
+					<option value="15000">15 sec</option>
+					<option value="20000">20 sec</option>
+					<option value="25000">25 sec</option>
+					<option value="30000">30 sec</option>
+					<option value="60000">1 min</option>
+					<option value="3600000">1 hr</option>
+					<option value="28800000">8 hrs</option>
+					<option value="86400000">1 day</option>
+				</field>
+				
+				<field name="oncepersession" type="list" default="false" label="Open floater:" description="Do you want to run the floater every time your website opens (Always), only once per Joomla session (Once per Session) or only once in 24 hours (Once per Day)?">
+ 					<option value="false">Always</option>
+    		        <option value="oncepersession">Once per Session</option>
+    		        <option value="onceperday">Once per Day</option>
+    		    </field>
+				
+				<field name="@spacer" type="spacer" default="" label="" description="" />
+				
+				<field name="startpos" type="text" default="-400" label="Initial Position of box" description="Initial Position of box (don't write px after the integer.)" />
+				<field name="rightpos" type="text" default="100" label="Position right" description="Ending Position of module when sliding right (don't write px after the integer.)" />
+				<field name="rightspeed" type="text" default="20" label="Speed right" description="Sliding Speed of module when sliding right, the smaller the number, the faster..." />		
+				<field name="leftpos" type="text" default="-400" label="Position left" description="Ending Position of module when sliding left (don't write px after the integer.)" />
+				<field name="leftspeed" type="text" default="10" label="Speed left" description="Sliding Speed of module when sliding left, the smaller the number, the faster..." />
+				
+				<field name="@spacer" type="spacer" default="" label="" description="" />
+				
+				<field name="boxwidth" type="text" default="300px" label="Container box width" description="Width of box that will contain the floater module in px." />
+				<field name="boxheight" type="text" default="300px" label="Container box height" description="Height of box that will contain the floater module in px." />
+				<field name="boxleft" type="text" default="-400px" label="Container box left" description="Distance of box left." />
+				<field name="boxtop" type="text" default="200px" label="Container box top" description="Distance of box from top." />		
+				<field name="bgcolor" type="text" default="#ffffff" label="bgcolor" description="Background color of container box - use 'transparent' or color hex like '#ffffff'. " />
+				<field name="border" type="text" default="7px solid #135CAE" label="border" description="Border of container box - Example: 7px solid #135CAE or none for no border" />
+				<field name="opacity" type="text" default="90" label="Box Opacity" description="Opacity of container box - full numbers between 0(=not visible) and 100(=fully visible)" />
+				<field name="talign" type="text" default="right" label="Box align" description="Text-align of container box - left, center, right" />
+				
+				<field name="@spacer" type="spacer" default="" label="" description="" />
+				
+				<field name="iwidth" type="text" default="270px" label="Inside box width" description="Width of Div Inside the Box that will contain the floater module px." />
+				<field name="iheight" type="text" default="250px" label="Inside box height" description="Height of Div Inside the Box that will contain the floater module in px." />
+				<field name="ileft" type="text" default="10px" label="Container box left" description="Padding left." />
+				<field name="itop" type="text" default="0px" label="Container box top" description="Padding top. Not counting .Close Window." />		
+				<field name="ibgcolor" type="text" default="transparent" label="bgcolor" description="Background color of container box - use 'transparent' or color hex like '#f7f7f7'. " />
+				<field name="iborder" type="text" default="none" label="border" description="Border of container box - Example: 1px dotted grey or none for no border" />
+				<field name="italign" type="text" default="center" label="Text align Inside" description="Text-align of Div Inside the Box - left, center, right" />
+				<field name="ioverflow" type="list" default="auto" label="Overflow" description="What happens to content larger then the Inside Div? Choose an Option">
+					<option value="visible">visible</option>
+					<option value="hidden">hidden</option>
+					<option value="scroll">scroll</option>
+					<option value="auto">auto</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

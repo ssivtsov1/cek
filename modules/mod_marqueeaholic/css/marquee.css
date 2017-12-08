@@ -1,0 +1,5 @@
+.marquee,  .marquee-with-options,  .marquee-vert-before,  .marquee-vert {
+width: 100%;
+overflow: hidden;
+border: 0px solid #ccc;
+}

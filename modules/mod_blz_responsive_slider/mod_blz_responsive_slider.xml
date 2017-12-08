@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.0" client="site" method="upgrade">
+	<name>Blazing Responsive Slider</name>
+	<author>Dario Pintarić</author>
+	<creationDate>March 2015</creationDate>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>info@dblaze.eu</authorEmail>
+	<authorUrl>http://www.dblaze.eu</authorUrl>
+	<version>1.2</version>
+	<description>MOD_BLZ_RS_DESC</description>
+
+	<files>
+		<filename module="mod_blz_responsive_slider">mod_blz_responsive_slider.php</filename>
+		<filename>index.html</filename>
+		<filename>mod_blz_responsive_slider.xml</filename>
+		<folder>css</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>tmpl</folder>
+	</files>
+
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_blz_responsive_slider.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.mod_blz_responsive_slider.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+
+			<fieldset name="basic">
+				
+				<field name="template" type="filelist" default="default" label="Template layout" description="" directory="modules/mod_blz_responsive_slider/tmpl" filter=".php" stripext="true" hide_none="true" hide_default="true" />
+
+				<field name="autoAdvance" type="radio" label="MOD_BLZ_RS_AUTOPLAY" description="MOD_BLZ_RS_AUTOPLAY_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				
+				<field name="mobileAutoAdvance" type="radio" label="MOD_BLZ_RS_AUTOPLAY_DEVICES" description="MOD_BLZ_RS_AUTOPLAY_DEVICES_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field name="slideOn" type="list" label="MOD_BLZ_RS_SLIDE_EFFECT_ELEMENT" description="MOD_BLZ_RS_SLIDE_EFFECT_ELEMENT_DESC" default="next" >
+					<option value="prev">MOD_BLZ_RS_SLIDE_EFFECT_ELEMENT_VAL_PREV</option>
+					<option value="next">MOD_BLZ_RS_SLIDE_EFFECT_ELEMENT_VAL_NEXT</option>
+					<option value="random">MOD_BLZ_RS_SLIDE_EFFECT_ELEMENT_VAL_RAND</option>
+				</field>
+
+				<field name="slideAsLink" type="radio" label="MOD_BLZ_RS_SLIDE_LINK" description="MOD_BLZ_RS_SLIDE_LINK_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field name="thumbnails" type="radio" label="MOD_BLZ_RS_THUMBS" description="MOD_BLZ_RS_THUMBS_DESC" default="0" class="btn-group btn-group-yesno">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field name="time" type="int" label="MOD_BLZ_RS_DURATION" description="MOD_BLZ_RS_DURATION_DESC" default="3000" />
+				<field name="transPeriod" type="int" label="MOD_BLZ_RS_ANIM_DURATION" description="MOD_BLZ_RS_ANIM_DURATION_DESC" default="1000" />
+				
+				<field name="cols" type="int" label="MOD_BLZ_RS_COLS_TRANS" description="MOD_BLZ_RS_COLS_TRANS_DESC" default="10" />
+				<field name="rows" type="int" label="MOD_BLZ_RS_ROWS_TRANS" description="MOD_BLZ_RS_ROWS_TRANS_DESC" default="10" />
+				<field name="slicedCols" type="int" label="MOD_BLZ_RS_SLC_COLS_TRANS" description="MOD_BLZ_RS_SLC_COLS_TRANS_DESC" default="10" />
+				<field name="slicedRows" type="int" label="MOD_BLZ_RS_SLC_ROWS_TRANS" description="MOD_BLZ_RS_SLC_ROWS_TRANS_DESC" default="10" />
+
+				<field name="fx" type="list" label="MOD_BLZ_RS_FX" description="MOD_BLZ_RS_FX_DESC" default="simpleFade" multiple="true">
+					<option value="simpleFade">simpleFade</option>
+					<option value="curtainTopLeft">curtainTopLeft</option>
+					<option value="curtainTopRight">curtainTopRight</option>
+					<option value="curtainBottomLeft">curtainBottomLeft</option>
+					<option value="curtainBottomRight">curtainBottomRight</option>
+					<option value="curtainSliceLeft">curtainSliceLeft</option>
+					<option value="curtainSliceRight">curtainSliceRight</option>
+					<option value="blindCurtainTopLeft">blindCurtainTopLeft</option>
+					<option value="blindCurtainTopRight">blindCurtainTopRight</option>
+					<option value="blindCurtainBottomLeft">blindCurtainBottomLeft</option>
+					<option value="blindCurtainBottomRight">blindCurtainBottomRight</option>
+					<option value="blindCurtainSliceBottom">blindCurtainSliceBottom</option>
+					<option value="blindCurtainSliceTop">blindCurtainSliceTop</option>
+					<option value="stampede">stampede</option>
+					<option value="mosaic">mosaic</option>
+					<option value="mosaicReverse">mosaicReverse</option>
+					<option value="mosaicRandom">mosaicRandom</option>
+					<option value="mosaicSpiral">mosaicSpiral</option>
+					<option value="mosaicSpiralReverse">mosaicSpiralReverse</option>
+					<option value="topLeftBottomRight">topLeftBottomRight</option>
+					<option value="bottomRightTopLeft">bottomRightTopLeft</option>
+					<option value="bottomLeftTopRight">bottomLeftTopRight</option>
+					<option value="bottomLeftTopRight">bottomLeftTopRight</option>
+					<option value="scrollLeft">scrollLeft</option>
+					<option value="scrollRight">scrollRight</option>
+					<option value="scrollHorz">scrollHorz</option>
+					<option value="scrollBottom">scrollBottom</option>
+					<option value="scrollTop">scrollTop</option>
+				</field>
+				
+				<field name="gridDifference" type="int" label="MOD_BLZ_RS_GRID_DIFF" description="MOD_BLZ_RS_GRID_DIFF_DESC" default="250" />
+				<field name="height" type="int" label="MOD_BLZ_RS_HEIGHT" description="MOD_BLZ_RS_HEIGHT_DESC" default="30" />
+				<field name="minHeight" type="string" label="MOD_BLZ_RS_MIN_HEIGHT" description="MOD_BLZ_RS_MIN_HEIGHT_DESC" default="200" />
+				<field name="hover" type="radio" label="MOD_BLZ_RS_HOVER" description="MOD_BLZ_RS_HOVER_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				
+				<field name="loader" type="list" label="MOD_BLZ_RS_LOADER" description="MOD_BLZ_RS_LOADER_DESC" default="bar" >
+					<option value="none">MOD_BLZ_RS_LOADER_VAL_NONE</option>
+					<option value="bar">MOD_BLZ_RS_LOADER_VAL_BAR</option>
+					<option value="pie">MOD_BLZ_RS_LOADER_VAL_PIE</option>
+				</field>
+
+				<field name="barDirection" type="list" label="MOD_BLZ_RS_BAR_DIR" description="MOD_BLZ_RS_BAR_DIR_DESC" default="leftToRight" >
+					<option value="leftToRight">MOD_BLZ_RS_BAR_DIR_VAL_LTR</option>
+					<option value="rightToLeft">MOD_BLZ_RS_BAR_DIR_VAL_RTL</option>
+					<option value="topToBottom">MOD_BLZ_RS_BAR_DIR_VAL_TTB</option>
+					<option value="bottomToTop">MOD_BLZ_RS_BAR_DIR_VAL_BTT</option>
+				</field>
+
+				<field name="barPosition" type="list" label="MOD_BLZ_RS_BAR_POS" description="MOD_BLZ_RS_BAR_POS_DESC" default="top" >
+					<option value="bottom">MOD_BLZ_RS_BAR_POS_VAL_B</option>
+					<option value="left">MOD_BLZ_RS_BAR_POS_VAL_L</option>
+					<option value="top">MOD_BLZ_RS_BAR_POS_VAL_T</option>
+					<option value="right">MOD_BLZ_RS_BAR_POS_VAL_R</option>
+				</field>
+
+				<field name="pieDiameter" type="int" label="MOD_BLZ_RS_PIE_DIAM" description="MOD_BLZ_RS_PIE_DIAM_DESC" default="40" />
+
+				<field name="piePosition" type="list" label="MOD_BLZ_RS_PIE_POS" description="MOD_BLZ_RS_PIE_POS_DESC" default="top" >
+					<option value="rightTop">MOD_BLZ_RS_PIE_POS_VAL_RT</option>
+					<option value="leftTop">MOD_BLZ_RS_PIE_POS_VAL_LT</option>
+					<option value="leftBottom">MOD_BLZ_RS_PIE_POS_VAL_LB</option>
+					<option value="rightBottom">MOD_BLZ_RS_PIE_POS_VAL_RB</option>
+				</field>
+
+				<field name="loaderColor" type="color" default="#FFFFFF" label="MOD_BLZ_RS_LOADER_COLOR" description="MOD_BLZ_RS_LOADER_COLOR_DESC" />
+				<field name="loaderBgColor" type="color" default="#00858C" label="MOD_BLZ_RS_LOADER_BGCOLOR" description="MOD_BLZ_RS_LOADER_BGCOLOR_DESC" />
+
+				<field name="loaderOpacity" type="string" label="MOD_BLZ_RS_LOADER_OPACITY" description="MOD_BLZ_RS_LOADER_OPACITY_DESC" default="0.7" />
+				<field name="loaderPadding" type="int" label="MOD_BLZ_RS_LOADER_PADDING" description="MOD_BLZ_RS_LOADER_PADDING_DESC" default="1" />
+				<field name="loaderStroke" type="int" label="MOD_BLZ_RS_LOADER_STROKE" description="MOD_BLZ_RS_LOADER_STROKE_DESC" default="5" />
+
+				<field name="navigation" type="radio" label="MOD_BLZ_RS_NAVIGATION" description="MOD_BLZ_RS_NAVIGATION_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>
+
+				<field name="navigationHover" type="radio" label="MOD_BLZ_RS_NAVIGATION_HOVER" description="MOD_BLZ_RS_NAVIGATION_HOVER_DESC" default="0" class="btn-group btn-group-yesno">
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>
+
+				<field name="mobileNavHover" type="radio" label="MOD_BLZ_RS_NAVIGATION_MOBILE" description="MOD_BLZ_RS_NAVIGATION_MOBILE_DESC" default="0" class="btn-group btn-group-yesno">
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>
+
+				<field name="playPause" type="radio" label="MOD_BLZ_RS_PLAY_PAUSE" description="MOD_BLZ_RS_PLAY_PAUSE_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>
+
+				<field name="opacityOnGrid" type="radio" label="MOD_BLZ_RS_GRID_OPACITY" description="MOD_BLZ_RS_GRID_OPACITY_DESC" default="0" class="btn-group btn-group-yesno">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field name="pagination" type="radio" label="MOD_BLZ_RS_PAGINATION" description="MOD_BLZ_RS_PAGINATION_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>
+				
+				<field name="pauseOnClick" type="radio" label="MOD_BLZ_RS_CLICK_HOVER" description="MOD_BLZ_RS_CLICK_HOVER_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field name="portrait" type="radio" label="MOD_BLZ_RS_PORTRAIT" description="MOD_BLZ_RS_PORTRAIT_DESC" default="0" class="btn-group btn-group-yesno">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field name="caption_y_pos" type="int" label="MOD_BLZ_RS_CAPTION_Y_POS" description="MOD_BLZ_RS_CAPTION_Y_POS_DESC" default="40" />
+				<field name="caption_width" type="int" label="MOD_BLZ_RS_CAPTION_WIDTH" description="MOD_BLZ_RS_CAPTION_WIDTH_DESC" default="50" />
+				<field name="caption_bgcolor" type="color" default="#FFFFFF" label="MOD_BLZ_RS_CAPTION_BGCOLOR" description="MOD_BLZ_RS_CAPTION_BGCOLOR_DESC" />
+				<field name="caption_bg_opacity" type="float" default="0.5" label="MOD_BLZ_RS_CAPTION_BG_OPACITY" description="MOD_BLZ_RS_CAPTION_BG_OPACITY_DESC" />
+				<field name="caption_color" type="color" default="#666666" label="MOD_BLZ_RS_CAPTION_COLOR" description="MOD_BLZ_RS_CAPTION_COLOR_DESC" />
+				<field name="caption_padding" type="int" default="15" label="MOD_BLZ_RS_CAPTION_PADDING" description="MOD_BLZ_RS_CAPTION_PADDING_DESC" />
+				<field name="caption_fx" type="list" label="MOD_BLZ_RS_CAPTION_FX" description="MOD_BLZ_RS_CAPTION_FX_DESC" default="fadeFromTop">
+					<option value="simpleFade">simpleFade</option>
+					<option value="moveFromLeft">moveFromLeft</option>
+					<option value="moveFromRight">moveFromRight</option>
+					<option value="moveFromTop">moveFromTop</option>
+					<option value="moveFromTop">moveFromTop</option>
+					<option value="moveFromBottom">moveFromBottom</option>
+					<option value="fadeIn">fadeIn</option>
+					<option value="fadeFromLeft">fadeFromLeft</option>
+					<option value="fadeFromRight">fadeFromRight</option>
+					<option value="fadeFromTop">fadeFromTop</option>
+					<option value="fadeFromBottom">fadeFromBottom</option>
+				</field>
+				
+				<field name="button_hovers" type="color" default="#00858C" label="MOD_BLZ_RS_BUTTON_HOVER_COLOR" description="MOD_BLZ_RS_BUTTON_HOVER_COLOR_DESC" />
+				<field name="button_borders" type="color" default="#FFFFFF" label="MOD_BLZ_RS_BUTTON_BORDERS_COLOR" description="MOD_BLZ_RS_BUTTON_BORDERS_COLOR_DESC" />
+
+				<field name="Fixes"		type="spacer"	label="Fixes" />
+        
+				<field name="fix_width" type="radio" label="MOD_BLZ_RS_FIXWIDTH" description="MOD_BLZ_RS_FIXWIDTH_DESC" default="0" class="btn-group btn-group-yesno">
+					<option value="0">JDISABLED</option>
+					<option value="1">JENABLED</option>
+				</field>
+			</fieldset>	
+
+			<fieldset name="slides">
+				<field name="slide1"		type="spacer"	label="Slide 1" />
+				<field name="slide1_img"	type="media"	label="MOD_BLZ_RS_IMAGE"		description="MOD_BLZ_RS_IMAGE_DESC" default="" directory="images" />
+				<field name="slide1_link"	type="URL"		label="MOD_BLZ_RS_LINK"			description="MOD_BLZ_RS_LINK_MORE_DESC" />
+				<field name="slide1_target"	type="radio"	label="MOD_BLZ_RS_LINK_TARGET"	description="MOD_BLZ_RS_LINK_TARGET_DESC" default="0" class="btn-group">
+					<option value="0">MOD_BLZ_RS_LINK_TARGET_SAME</option>
+					<option value="1">MOD_BLZ_RS_LINK_TARGET_NEW</option>
+				</field>
+				<field name="slide1_more"	type="radio"	label="MOD_BLZ_RS_LINK_MORE"	description="MOD_BLZ_RS_LINK_MORE_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="slide1_text"	type="textarea"	label="MOD_BLZ_RS_TEXT"			description="MOD_BLZ_RS_TEXT_DESC" filter="safehtml" />
+
+				<field name="slide2"		type="spacer"	label="Slide 2" />
+				<field name="slide2_img"	type="media"	label="MOD_BLZ_RS_IMAGE"		description="MOD_BLZ_RS_IMAGE_DESC" default="" directory="images" />
+				<field name="slide2_link"	type="URL"		label="MOD_BLZ_RS_LINK"			description="MOD_BLZ_RS_LINK_MORE_DESC" />
+				<field name="slide2_target"	type="radio"	label="MOD_BLZ_RS_LINK_TARGET"	description="MOD_BLZ_RS_LINK_TARGET_DESC" default="0" class="btn-group">
+					<option value="0">MOD_BLZ_RS_LINK_TARGET_SAME</option>
+					<option value="1">MOD_BLZ_RS_LINK_TARGET_NEW</option>
+				</field>
+				<field name="slide2_more"	type="radio"	label="MOD_BLZ_RS_LINK_MORE"	description="MOD_BLZ_RS_LINK_MORE_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="slide2_text"	type="textarea"	label="MOD_BLZ_RS_TEXT"			description="MOD_BLZ_RS_TEXT_DESC" filter="safehtml" />
+
+				<field name="slide3"		type="spacer"	label="Slide 3" />
+				<field name="slide3_img"	type="media"	label="MOD_BLZ_RS_IMAGE"		description="MOD_BLZ_RS_IMAGE_DESC" default="" directory="images" />
+				<field name="slide3_link"	type="URL"		label="MOD_BLZ_RS_LINK"			description="MOD_BLZ_RS_LINK_MORE_DESC" />
+				<field name="slide3_target"	type="radio"	label="MOD_BLZ_RS_LINK_TARGET"	description="MOD_BLZ_RS_LINK_TARGET_DESC" default="0" class="btn-group">
+					<option value="0">MOD_BLZ_RS_LINK_TARGET_SAME</option>
+					<option value="1">MOD_BLZ_RS_LINK_TARGET_NEW</option>
+				</field>
+				<field name="slide3_more"	type="radio"	label="MOD_BLZ_RS_LINK_MORE"	description="MOD_BLZ_RS_LINK_MORE_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="slide3_text"	type="textarea"	label="MOD_BLZ_RS_TEXT"			description="MOD_BLZ_RS_TEXT_DESC" filter="safehtml" />
+
+				<field name="slide4"		type="spacer"	label="Slide 4" />
+				<field name="slide4_img"	type="media"	label="MOD_BLZ_RS_IMAGE"		description="MOD_BLZ_RS_IMAGE_DESC" default="" directory="images" />
+				<field name="slide4_link"	type="URL"		label="MOD_BLZ_RS_LINK"			description="MOD_BLZ_RS_LINK_MORE_DESC" />
+				<field name="slide4_target"	type="radio"	label="MOD_BLZ_RS_LINK_TARGET"	description="MOD_BLZ_RS_LINK_TARGET_DESC" default="0" class="btn-group">
+					<option value="0">MOD_BLZ_RS_LINK_TARGET_SAME</option>
+					<option value="1">MOD_BLZ_RS_LINK_TARGET_NEW</option>
+				</field>
+				<field name="slide4_more"	type="radio"	label="MOD_BLZ_RS_LINK_MORE"	description="MOD_BLZ_RS_LINK_MORE_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="slide4_text"	type="textarea"	label="MOD_BLZ_RS_TEXT"			description="MOD_BLZ_RS_TEXT_DESC" filter="safehtml" />
+
+				<field name="slide5"		type="spacer"	label="Slide 5" />
+				<field name="slide5_img"	type="media"	label="MOD_BLZ_RS_IMAGE"		description="MOD_BLZ_RS_IMAGE_DESC" default="" directory="images" />
+				<field name="slide5_link"	type="URL"		label="MOD_BLZ_RS_LINK"			description="MOD_BLZ_RS_LINK_MORE_DESC" />
+				<field name="slide5_target"	type="radio"	label="MOD_BLZ_RS_LINK_TARGET"	description="MOD_BLZ_RS_LINK_TARGET_DESC" default="0" class="btn-group">
+					<option value="0">MOD_BLZ_RS_LINK_TARGET_SAME</option>
+					<option value="1">MOD_BLZ_RS_LINK_TARGET_NEW</option>
+				</field>
+				<field name="slide5_more"	type="radio"	label="MOD_BLZ_RS_LINK_MORE"	description="MOD_BLZ_RS_LINK_MORE_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="slide5_text"	type="textarea"	label="MOD_BLZ_RS_TEXT"			description="MOD_BLZ_RS_TEXT_DESC" filter="safehtml" />
+
+				<field name="slide6"		type="spacer"	label="Slide 6" />
+				<field name="slide6_img"	type="media"	label="MOD_BLZ_RS_IMAGE"		description="MOD_BLZ_RS_IMAGE_DESC" default="" directory="images" />
+				<field name="slide6_link"	type="URL"		label="MOD_BLZ_RS_LINK"			description="MOD_BLZ_RS_LINK_MORE_DESC" />
+				<field name="slide6_target"	type="radio"	label="MOD_BLZ_RS_LINK_TARGET"	description="MOD_BLZ_RS_LINK_TARGET_DESC" default="0" class="btn-group">
+					<option value="0">MOD_BLZ_RS_LINK_TARGET_SAME</option>
+					<option value="1">MOD_BLZ_RS_LINK_TARGET_NEW</option>
+				</field>
+				<field name="slide6_more"	type="radio"	label="MOD_BLZ_RS_LINK_MORE"	description="MOD_BLZ_RS_LINK_MORE_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="slide6_text"	type="textarea"	label="MOD_BLZ_RS_TEXT"			description="MOD_BLZ_RS_TEXT_DESC" filter="safehtml" />
+
+				<field name="slide7"		type="spacer"	label="Slide 7" />
+				<field name="slide7_img"	type="media"	label="MOD_BLZ_RS_IMAGE"		description="MOD_BLZ_RS_IMAGE_DESC" default="" directory="images" />
+				<field name="slide7_link"	type="URL"		label="MOD_BLZ_RS_LINK"			description="MOD_BLZ_RS_LINK_MORE_DESC" />
+				<field name="slide7_target"	type="radio"	label="MOD_BLZ_RS_LINK_TARGET"	description="MOD_BLZ_RS_LINK_TARGET_DESC" default="0" class="btn-group">
+					<option value="0">MOD_BLZ_RS_LINK_TARGET_SAME</option>
+					<option value="1">MOD_BLZ_RS_LINK_TARGET_NEW</option>
+				</field>
+				<field name="slide7_more"	type="radio"	label="MOD_BLZ_RS_LINK_MORE"	description="MOD_BLZ_RS_LINK_MORE_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="slide7_text"	type="textarea"	label="MOD_BLZ_RS_TEXT"			description="MOD_BLZ_RS_TEXT_DESC" filter="safehtml" />
+
+				<field name="slide8"		type="spacer"	label="Slide 8" />
+				<field name="slide8_img"	type="media"	label="MOD_BLZ_RS_IMAGE"		description="MOD_BLZ_RS_IMAGE_DESC" default="" directory="images" />
+				<field name="slide8_link"	type="URL"		label="MOD_BLZ_RS_LINK"			description="MOD_BLZ_RS_LINK_MORE_DESC" />
+				<field name="slide8_target"	type="radio"	label="MOD_BLZ_RS_LINK_TARGET"	description="MOD_BLZ_RS_LINK_TARGET_DESC" default="0" class="btn-group">
+					<option value="0">MOD_BLZ_RS_LINK_TARGET_SAME</option>
+					<option value="1">MOD_BLZ_RS_LINK_TARGET_NEW</option>
+				</field>
+				<field name="slide8_more"	type="radio"	label="MOD_BLZ_RS_LINK_MORE"	description="MOD_BLZ_RS_LINK_MORE_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="slide8_text"	type="textarea"	label="MOD_BLZ_RS_TEXT"			description="MOD_BLZ_RS_TEXT_DESC" filter="safehtml" />
+
+				<field name="slide9"		type="spacer"	label="Slide 9" />
+				<field name="slide9_img"	type="media"	label="MOD_BLZ_RS_IMAGE"		description="MOD_BLZ_RS_IMAGE_DESC" default="" directory="images" />
+				<field name="slide9_link"	type="URL"		label="MOD_BLZ_RS_LINK"			description="MOD_BLZ_RS_LINK_MORE_DESC" />
+				<field name="slide9_target"	type="radio"	label="MOD_BLZ_RS_LINK_TARGET"	description="MOD_BLZ_RS_LINK_TARGET_DESC" default="0" class="btn-group">
+					<option value="0">MOD_BLZ_RS_LINK_TARGET_SAME</option>
+					<option value="1">MOD_BLZ_RS_LINK_TARGET_NEW</option>
+				</field>
+				<field name="slide9_more"	type="radio"	label="MOD_BLZ_RS_LINK_MORE"	description="MOD_BLZ_RS_LINK_MORE_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="slide9_text"	type="textarea"	label="MOD_BLZ_RS_TEXT"			description="MOD_BLZ_RS_TEXT_DESC" filter="safehtml" />
+			</fieldset>
+
+			<fieldset name="slides10">
+				<field name="slide10"		type="spacer"	label="Slide 10" />
+				<field name="slide10_img"	type="media"	label="MOD_BLZ_RS_IMAGE"		description="MOD_BLZ_RS_IMAGE_DESC" default="" directory="images" />
+				<field name="slide10_link"	type="URL"		label="MOD_BLZ_RS_LINK"			description="MOD_BLZ_RS_LINK_MORE_DESC" />
+				<field name="slide10_target"	type="radio"	label="MOD_BLZ_RS_LINK_TARGET"	description="MOD_BLZ_RS_LINK_TARGET_DESC" default="0" class="btn-group">
+					<option value="0">MOD_BLZ_RS_LINK_TARGET_SAME</option>
+					<option value="1">MOD_BLZ_RS_LINK_TARGET_NEW</option>
+				</field>
+				<field name="slide10_more"	type="radio"	label="MOD_BLZ_RS_LINK_MORE"	description="MOD_BLZ_RS_LINK_MORE_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="slide10_text"	type="textarea"	label="MOD_BLZ_RS_TEXT"			description="MOD_BLZ_RS_TEXT_DESC" filter="safehtml" />
+
+				<field name="slide11"		type="spacer"	label="Slide 11" />
+				<field name="slide11_img"	type="media"	label="MOD_BLZ_RS_IMAGE"		description="MOD_BLZ_RS_IMAGE_DESC" default="" directory="images" />
+				<field name="slide11_link"	type="URL"		label="MOD_BLZ_RS_LINK"			description="MOD_BLZ_RS_LINK_MORE_DESC" />
+				<field name="slide11_target"	type="radio"	label="MOD_BLZ_RS_LINK_TARGET"	description="MOD_BLZ_RS_LINK_TARGET_DESC" default="0" class="btn-group">
+					<option value="0">MOD_BLZ_RS_LINK_TARGET_SAME</option>
+					<option value="1">MOD_BLZ_RS_LINK_TARGET_NEW</option>
+				</field>
+				<field name="slide11_more"	type="radio"	label="MOD_BLZ_RS_LINK_MORE"	description="MOD_BLZ_RS_LINK_MORE_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="slide11_text"	type="textarea"	label="MOD_BLZ_RS_TEXT"			description="MOD_BLZ_RS_TEXT_DESC" filter="safehtml" />
+
+				<field name="slide12"		type="spacer"	label="Slide 12" />
+				<field name="slide12_img"	type="media"	label="MOD_BLZ_RS_IMAGE"		description="MOD_BLZ_RS_IMAGE_DESC" default="" directory="images" />
+				<field name="slide12_link"	type="URL"		label="MOD_BLZ_RS_LINK"			description="MOD_BLZ_RS_LINK_MORE_DESC" />
+				<field name="slide12_target"	type="radio"	label="MOD_BLZ_RS_LINK_TARGET"	description="MOD_BLZ_RS_LINK_TARGET_DESC" default="0" class="btn-group">
+					<option value="0">MOD_BLZ_RS_LINK_TARGET_SAME</option>
+					<option value="1">MOD_BLZ_RS_LINK_TARGET_NEW</option>
+				</field>
+				<field name="slide12_more"	type="radio"	label="MOD_BLZ_RS_LINK_MORE"	description="MOD_BLZ_RS_LINK_MORE_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="slide12_text"	type="textarea"	label="MOD_BLZ_RS_TEXT"			description="MOD_BLZ_RS_TEXT_DESC" filter="safehtml" />
+
+				<field name="slide13"		type="spacer"	label="Slide 13" />
+				<field name="slide13_img"	type="media"	label="MOD_BLZ_RS_IMAGE"		description="MOD_BLZ_RS_IMAGE_DESC" default="" directory="images" />
+				<field name="slide13_link"	type="URL"		label="MOD_BLZ_RS_LINK"			description="MOD_BLZ_RS_LINK_MORE_DESC" />
+				<field name="slide13_target"	type="radio"	label="MOD_BLZ_RS_LINK_TARGET"	description="MOD_BLZ_RS_LINK_TARGET_DESC" default="0" class="btn-group">
+					<option value="0">MOD_BLZ_RS_LINK_TARGET_SAME</option>
+					<option value="1">MOD_BLZ_RS_LINK_TARGET_NEW</option>
+				</field>
+				<field name="slide13_more"	type="radio"	label="MOD_BLZ_RS_LINK_MORE"	description="MOD_BLZ_RS_LINK_MORE_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="slide13_text"	type="textarea"	label="MOD_BLZ_RS_TEXT"			description="MOD_BLZ_RS_TEXT_DESC" filter="safehtml" />
+
+				<field name="slide14"		type="spacer"	label="Slide 14" />
+				<field name="slide14_img"	type="media"	label="MOD_BLZ_RS_IMAGE"		description="MOD_BLZ_RS_IMAGE_DESC" default="" directory="images" />
+				<field name="slide14_link"	type="URL"		label="MOD_BLZ_RS_LINK"			description="MOD_BLZ_RS_LINK_MORE_DESC" />
+				<field name="slide14_target"	type="radio"	label="MOD_BLZ_RS_LINK_TARGET"	description="MOD_BLZ_RS_LINK_TARGET_DESC" default="0" class="btn-group">
+					<option value="0">MOD_BLZ_RS_LINK_TARGET_SAME</option>
+					<option value="1">MOD_BLZ_RS_LINK_TARGET_NEW</option>
+				</field>
+				<field name="slide14_more"	type="radio"	label="MOD_BLZ_RS_LINK_MORE"	description="MOD_BLZ_RS_LINK_MORE_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="slide14_text"	type="textarea"	label="MOD_BLZ_RS_TEXT"			description="MOD_BLZ_RS_TEXT_DESC" filter="safehtml" />
+
+				<field name="slide15"		type="spacer"	label="Slide 15" />
+				<field name="slide15_img"	type="media"	label="MOD_BLZ_RS_IMAGE"		description="MOD_BLZ_RS_IMAGE_DESC" default="" directory="images" />
+				<field name="slide15_link"	type="URL"		label="MOD_BLZ_RS_LINK"			description="MOD_BLZ_RS_LINK_MORE_DESC" />
+				<field name="slide15_target"	type="radio"	label="MOD_BLZ_RS_LINK_TARGET"	description="MOD_BLZ_RS_LINK_TARGET_DESC" default="0" class="btn-group">
+					<option value="0">MOD_BLZ_RS_LINK_TARGET_SAME</option>
+					<option value="1">MOD_BLZ_RS_LINK_TARGET_NEW</option>
+				</field>
+				<field name="slide15_more"	type="radio"	label="MOD_BLZ_RS_LINK_MORE"	description="MOD_BLZ_RS_LINK_MORE_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="slide15_text"	type="textarea"	label="MOD_BLZ_RS_TEXT"			description="MOD_BLZ_RS_TEXT_DESC" filter="safehtml" />
+
+				<field name="slide16"		type="spacer"	label="Slide 16" />
+				<field name="slide16_img"	type="media"	label="MOD_BLZ_RS_IMAGE"		description="MOD_BLZ_RS_IMAGE_DESC" default="" directory="images" />
+				<field name="slide16_link"	type="URL"		label="MOD_BLZ_RS_LINK"			description="MOD_BLZ_RS_LINK_MORE_DESC" />
+				<field name="slide16_target"	type="radio"	label="MOD_BLZ_RS_LINK_TARGET"	description="MOD_BLZ_RS_LINK_TARGET_DESC" default="0" class="btn-group">
+					<option value="0">MOD_BLZ_RS_LINK_TARGET_SAME</option>
+					<option value="1">MOD_BLZ_RS_LINK_TARGET_NEW</option>
+				</field>
+				<field name="slide16_more"	type="radio"	label="MOD_BLZ_RS_LINK_MORE"	description="MOD_BLZ_RS_LINK_MORE_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="slide16_text"	type="textarea"	label="MOD_BLZ_RS_TEXT"			description="MOD_BLZ_RS_TEXT_DESC" filter="safehtml" />
+
+				<field name="slide17"		type="spacer"	label="Slide 17" />
+				<field name="slide17_img"	type="media"	label="MOD_BLZ_RS_IMAGE"		description="MOD_BLZ_RS_IMAGE_DESC" default="" directory="images" />
+				<field name="slide17_link"	type="URL"		label="MOD_BLZ_RS_LINK"			description="MOD_BLZ_RS_LINK_MORE_DESC" />
+				<field name="slide17_target"	type="radio"	label="MOD_BLZ_RS_LINK_TARGET"	description="MOD_BLZ_RS_LINK_TARGET_DESC" default="0" class="btn-group">
+					<option value="0">MOD_BLZ_RS_LINK_TARGET_SAME</option>
+					<option value="1">MOD_BLZ_RS_LINK_TARGET_NEW</option>
+				</field>
+				<field name="slide17_more"	type="radio"	label="MOD_BLZ_RS_LINK_MORE"	description="MOD_BLZ_RS_LINK_MORE_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="slide17_text"	type="textarea"	label="MOD_BLZ_RS_TEXT"			description="MOD_BLZ_RS_TEXT_DESC" filter="safehtml" />
+
+				<field name="slide18"		type="spacer"	label="Slide 18" />
+				<field name="slide18_img"	type="media"	label="MOD_BLZ_RS_IMAGE"		description="MOD_BLZ_RS_IMAGE_DESC" default="" directory="images" />
+				<field name="slide18_link"	type="URL"		label="MOD_BLZ_RS_LINK"			description="MOD_BLZ_RS_LINK_MORE_DESC" />
+				<field name="slide18_target"	type="radio"	label="MOD_BLZ_RS_LINK_TARGET"	description="MOD_BLZ_RS_LINK_TARGET_DESC" default="0" class="btn-group">
+					<option value="0">MOD_BLZ_RS_LINK_TARGET_SAME</option>
+					<option value="1">MOD_BLZ_RS_LINK_TARGET_NEW</option>
+				</field>
+				<field name="slide18_more"	type="radio"	label="MOD_BLZ_RS_LINK_MORE"	description="MOD_BLZ_RS_LINK_MORE_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="slide18_text"	type="textarea"	label="MOD_BLZ_RS_TEXT"			description="MOD_BLZ_RS_TEXT_DESC" filter="safehtml" />
+
+				<field name="slide19"		type="spacer"	label="Slide 19" />
+				<field name="slide19_img"	type="media"	label="MOD_BLZ_RS_IMAGE"		description="MOD_BLZ_RS_IMAGE_DESC" default="" directory="images" />
+				<field name="slide19_link"	type="URL"		label="MOD_BLZ_RS_LINK"			description="MOD_BLZ_RS_LINK_MORE_DESC" />
+				<field name="slide19_target"	type="radio"	label="MOD_BLZ_RS_LINK_TARGET"	description="MOD_BLZ_RS_LINK_TARGET_DESC" default="0" class="btn-group">
+					<option value="0">MOD_BLZ_RS_LINK_TARGET_SAME</option>
+					<option value="1">MOD_BLZ_RS_LINK_TARGET_NEW</option>
+				</field>
+				<field name="slide19_more"	type="radio"	label="MOD_BLZ_RS_LINK_MORE"	description="MOD_BLZ_RS_LINK_MORE_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="slide19_text"	type="textarea"	label="MOD_BLZ_RS_TEXT"			description="MOD_BLZ_RS_TEXT_DESC" filter="safehtml" />
+
+				<field name="slide20"		type="spacer"	label="Slide 20" />
+				<field name="slide20_img"	type="media"	label="MOD_BLZ_RS_IMAGE"		description="MOD_BLZ_RS_IMAGE_DESC" default="" directory="images" />
+				<field name="slide20_link"	type="URL"		label="MOD_BLZ_RS_LINK"			description="MOD_BLZ_RS_LINK_MORE_DESC" />
+				<field name="slide20_target"	type="radio"	label="MOD_BLZ_RS_LINK_TARGET"	description="MOD_BLZ_RS_LINK_TARGET_DESC" default="0" class="btn-group">
+					<option value="0">MOD_BLZ_RS_LINK_TARGET_SAME</option>
+					<option value="1">MOD_BLZ_RS_LINK_TARGET_NEW</option>
+				</field>
+				<field name="slide20_more"	type="radio"	label="MOD_BLZ_RS_LINK_MORE"	description="MOD_BLZ_RS_LINK_MORE_DESC" default="1" class="btn-group btn-group-yesno">
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+				<field name="slide20_text"	type="textarea"	label="MOD_BLZ_RS_TEXT"			description="MOD_BLZ_RS_TEXT_DESC" filter="safehtml" />
+			</fieldset>
+
+			<fieldset name="advanced">
+				<field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+			</fieldset>
+
+		</fields>
+	</config>
+
+	<updateservers>
+		<server type="extension" priority="1" name="Blazing Responsive module">http://www.dblaze.eu/downloads/joomla/updates/mod_blz_responsive_slider.xml</server>
+	</updateservers>
+
+</extension>
